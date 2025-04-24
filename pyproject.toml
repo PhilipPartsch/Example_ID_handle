@@ -5,4 +5,5 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "Example ID"
 authors = [{name = "PhilipPartsch"}]
-dynamic = ["version", "description"]
+version = "0.0.1"
+description = "empty"

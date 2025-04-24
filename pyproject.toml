@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "Example ID"
+name = "Example_ID"
 authors = [{name = "PhilipPartsch"}]
 version = "0.0.1"
 description = "empty"

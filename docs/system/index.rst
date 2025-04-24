@@ -7,3 +7,7 @@ System Level
 
    empty
 
+.. lib:: Example lib
+   :id: LIB_EXAMPLE
+
+   empty

@@ -7,3 +7,7 @@ Component A
 
    empty
 
+.. comp:: Example comp
+   :id: C_EXAMPLE
+
+   empty

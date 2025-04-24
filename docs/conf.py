@@ -15,14 +15,6 @@ from reports import stake_req_without_satisfied_by
 
 from gitlink import get_edit_url_from_folder, extent_url_with_file, get_githoster_edit_url_for_need
 
-# For autodoc
-
-# For merge_dicts and other cripts on this level:
-sys.path.append(os.path.abspath('..'))
-
-# For test:
-sys.path.append(os.path.abspath('../tests'))
-import merge_dicts_test
 
 # -- Project information
 
@@ -31,31 +23,18 @@ import datetime
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
 
-project = 'ReConf 2023 X-As-Code'
-copyright = f'2023 - {date.year}, PhilipPartsch'
+project = 'Example'
+copyright = f'2025 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
-release = '0.3'
-version = '0.3.2'
+release = '0.1'
+version = '0.0.1'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
 
 extensions = [
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.doctest',
     'sphinx_needs',
-    'sphinxcontrib.plantuml',
-    'sphinxcontrib.test_reports',
-    'sphinxcontrib.collections',
-    'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
-    'sphinx_preview',
-    #'sphinx_immaterial',
 ]
 
 templates_path = ['_templates']

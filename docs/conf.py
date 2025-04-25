@@ -184,6 +184,19 @@ def setup(app):
     for func in metamodel.needs_functions:
         add_dynamic_function(app, func)
 
+# patch id generation:
+
+@aspectlib.Aspect
+def changeid(cutpoint, *args, **kwargs):
+    print('before hook:')
+    result = yield aspectlib.Proceed
+    print('after hook:')
+    yield aspectlib.Return(result)
+
+import sphinx_needs.api.need as needs
+
+needs.add_need = changeid(needs.add_need)
+
 # fix shinx-needs
 from sphinx_needs.data import NeedsCoreFields
 patched_options = [

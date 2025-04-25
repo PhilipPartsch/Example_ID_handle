@@ -185,6 +185,7 @@ def setup(app):
         add_dynamic_function(app, func)
 
 # patch id generation:
+import aspectlib
 
 @aspectlib.Aspect
 def changeid(cutpoint, *args, **kwargs):

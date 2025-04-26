@@ -194,18 +194,11 @@ def changeid(cutpoint, *args, **kwargs):
     print('after hook:')
     yield aspectlib.Return(result)
 
+import sphinx_needs.api
 import sphinx_needs.api.need
-import copy
 
-add_need_copy = copy.deepcopy(sphinx_needs.api.need)
-
-def changeid2(*args, **kwargs):
-    print('before hook2:')
-    result = add_need_copy(args, kwargs)
-    print('after hook2:')
-    return result
-
-sphinx_needs.api.need.add_need = changeid2
+sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
+#sphinx_needs.api.need.add_need = changeid(sphinx_needs.api.need.add_need)
 
 # fix shinx-needs
 from sphinx_needs.data import NeedsCoreFields

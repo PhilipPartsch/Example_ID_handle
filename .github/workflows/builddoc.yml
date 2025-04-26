@@ -34,6 +34,7 @@ jobs:
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami
     - name: Install graphviz & default-jdk
+      if: False
       run: sudo apt-get install graphviz default-jdk
     - name: Install dependencies
       run: |

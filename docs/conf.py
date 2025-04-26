@@ -197,13 +197,13 @@ needs_id_prefixes = [
 def patch_id(id:str, need_type: str, config:dict):
     new_id: str = ""
     if config["prefix_after_type"]:
-        type_dict = {}
+        type_prefix = ""
         for needs_type in needs_types:
             if needs_type['directive'] == need_type:
                 type_dict = needs_type
+                type_prefix = type_dict["prefix"]
                 break
 
-        type_prefix = type_dict[prefix]
         if id.startswith(type_prefix):
             id_without_type_prefix = id[len(type_prefix):]
             new_id = type_prefix + config["prefix"] + id_without_type_prefix + config["postfix"]

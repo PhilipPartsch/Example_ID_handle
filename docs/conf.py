@@ -257,7 +257,7 @@ def changeid(cutpoint, *args, **kwargs):
     new_id = kwargs['id']
     print('new_id: ' + str(new_id))
 
-    result = yield aspectlib.Proceed
+    result = yield aspectlib.Proceed(*args, **kwargs)
     print('after hook:')
     yield aspectlib.Return(result)
 

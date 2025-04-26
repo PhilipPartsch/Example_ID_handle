@@ -184,21 +184,31 @@ def setup(app):
     for func in metamodel.needs_functions:
         add_dynamic_function(app, func)
 
+needs_id_prefixes = [
+    {
+    "postfix": "_A",
+    "prefix":  "A_",
+    "prefix_after_type": True,
+    "paths": ["components/A"],
+    "links": "",
+    },
+]
+
 # patch id generation:
 import aspectlib
 
 @aspectlib.Aspect
 def changeid(cutpoint, *args, **kwargs):
     print('before hook:')
+    print('id: ' + str(kwargs['id']))
+    print('docname: ' + str(kwargs['docname']))
     result = yield aspectlib.Proceed
     print('after hook:')
     yield aspectlib.Return(result)
 
 import sphinx_needs.api
-import sphinx_needs.api.need
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
-#sphinx_needs.api.need.add_need = changeid(sphinx_needs.api.need.add_need)
 
 # fix shinx-needs
 from sphinx_needs.data import NeedsCoreFields

@@ -11,3 +11,8 @@ Component A
    :id: C_EXAMPLE
 
    empty
+
+
+todos:
+-  filter
+-  links

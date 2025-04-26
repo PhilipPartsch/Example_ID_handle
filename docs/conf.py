@@ -220,12 +220,11 @@ def changeid(cutpoint, *args, **kwargs):
 #    **kwargs: Any,
 #):
     print('before hook:')
-    print("Positional arguments:", args)
-    print("Keyword arguments:", kwargs)
+    #print("Positional arguments:", args)
+    #print("Keyword arguments:", kwargs)
     id = kwargs['id']
     print('id: ' + str(id))
-    need_type = ""
-    #need_type = args[3]
+    need_type = kwargs['need_type']
     print('need_type: ' + str(need_type))
     docname = args[1]
     print('docname: ' + str(docname))

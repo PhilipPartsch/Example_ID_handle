@@ -198,10 +198,23 @@ needs_id_prefixes = [
 import aspectlib
 
 @aspectlib.Aspect
-def changeid(cutpoint, *args, **kwargs):
+#def changeid(cutpoint, *args, **kwargs):
+def changeid(cutpoint,
+    app: Sphinx,
+    state: None | RSTState,
+    docname: None | str,
+    lineno: None | int,
+    need_type: str,
+    title: str,
+    *,
+    id: str | None = None,
+    **kwargs: Any,
+):
     print('before hook:')
     print('id: ' + str(kwargs['id']))
-    print('docname: ' + str(args[1]))
+    #print('docname: ' + str(args[1]))
+    print('docname: ' + str(docname))
+    print('state docname: ' + str(state.document.settings.env.docname))
     result = yield aspectlib.Proceed
     print('after hook:')
     yield aspectlib.Return(result)

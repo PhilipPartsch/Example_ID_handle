@@ -14,5 +14,7 @@ Component A
 
 
 todos:
--  filter
 -  links
+-  filter
+-  needpart
+-  embedded needs

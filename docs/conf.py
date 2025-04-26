@@ -189,10 +189,19 @@ needs_id_prefixes = [
     "postfix": "_A",
     "prefix":  "A_",
     "prefix_after_type": True,
-    "paths": ["components/A"],
+    "paths": ["components/A/"],
     "links": "",
     },
 ]
+
+def patch_id(id:str, need_type: str, config:dict):
+    new_id: str = ""
+    if config["prefix_after_type"]:
+        new_id = config["prefix"] + id + config["postfix"]
+    else:
+        new_id = config["prefix"] + id + config["postfix"]
+    return new_id
+
 
 # patch id generation:
 import aspectlib
@@ -211,11 +220,30 @@ def changeid(cutpoint, *args, **kwargs):
 #    **kwargs: Any,
 #):
     print('before hook:')
-    print('id: ' + str(kwargs['id']))
+    id = kwargs['id']
+    print('id: ' + str(id))
+    need_type = args[3]
+    print('need_type: ' + str(need_type))
     docname = args[1]
     print('docname: ' + str(docname))
-    state = docname = args[0]
-    print('state docname: ' + str(state.document.settings.env.docname))
+    state = args[0]
+    output_docname = state.document.settings.env.docname
+    print('state docname: ' + str(output_docname))
+
+    found: bool = False
+    for config in needs_id_prefixes:
+        for path in config["paths"]:
+            if output_docname.startswith(path):
+                found = True
+                kwargs['id'] = patch_id(id, need_type, config)
+            if found:
+                break
+        if found:
+            break
+
+    new_id = kwargs['id']
+    print('new_id: ' + str(new_id))
+
     result = yield aspectlib.Proceed
     print('after hook:')
     yield aspectlib.Return(result)

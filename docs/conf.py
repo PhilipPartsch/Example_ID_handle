@@ -201,7 +201,7 @@ import aspectlib
 def changeid(cutpoint, *args, **kwargs):
     print('before hook:')
     print('id: ' + str(kwargs['id']))
-    print('docname: ' + str(kwargs['docname']))
+    print('docname: ' + str(args['docname']))
     result = yield aspectlib.Proceed
     print('after hook:')
     yield aspectlib.Return(result)

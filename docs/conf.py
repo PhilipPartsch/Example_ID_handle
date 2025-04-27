@@ -243,21 +243,24 @@ def changeid(cutpoint, *args, **kwargs):
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
 
+    new_args = args
+    new_kwargs = kwargs
+
     found: bool = False
     for config in needs_id_prefixes:
         for path in config["paths"]:
             if output_docname.startswith(path):
                 found = True
-                kwargs['id'] = patch_id(id, need_type, config)
+                new_kwargs['id'] = patch_id(id, need_type, config)
             if found:
                 break
         if found:
             break
 
-    new_id = kwargs['id']
+    new_id = new_kwargs['id']
     print('new_id: ' + str(new_id))
 
-    result = yield aspectlib.Proceed(*args, **kwargs)
+    result = yield aspectlib.Proceed(*new_args, **new_kwargs)
     print('after hook:')
     yield aspectlib.Return(result)
 

@@ -251,7 +251,7 @@ def changeid(*args, **kwargs):
         for path in config["paths"]:
             if output_docname.startswith(path):
                 found = True
-                new_kwargs['id'] = patch_id(id, need_type, config)
+                kwargs['id'] = patch_id(id, need_type, config)
             if found:
                 break
         if found:
@@ -260,7 +260,7 @@ def changeid(*args, **kwargs):
     new_id = new_kwargs['id']
     print('new_id: ' + str(new_id))
 
-    result = yield aspectlib.Proceed(*new_args, **new_kwargs)
+    result = yield aspectlib.Proceed(*args, **kwargs)
     print('after hook:')
     yield aspectlib.Return(result)
 

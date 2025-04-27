@@ -218,7 +218,7 @@ def patch_id(id:str, need_type: str, config:dict):
 import aspectlib
 
 @aspectlib.Aspect
-def changeid(cutpoint, *args, **kwargs):
+def changeid(*args, **kwargs):
 #def changeid(cutpoint,
 #    app: Sphinx,
 #    state: None | RSTState,
@@ -237,9 +237,9 @@ def changeid(cutpoint, *args, **kwargs):
     print('id: ' + str(id))
     need_type = kwargs['need_type']
     print('need_type: ' + str(need_type))
-    docname = args[1]
+    docname = args[2]
     print('docname: ' + str(docname))
-    state = args[0]
+    state = args[1]
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
 

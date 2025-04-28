@@ -188,13 +188,13 @@ needs_id_prefixes = [
     {
     "postfix": "_A",
     "prefix":  "A_",
-    "prefix_after_type": True,
+    "prefix_after_type": False,
     "paths": ["components/A/"],
     "links": "satisfies",
     },
 ]
 
-def patch_id(id:str, need_type: str, config:dict):
+def patch_id(id:str, need_type: str, config: dict):
     new_id: str = ""
     if config["prefix_after_type"]:
         type_prefix = ""
@@ -213,6 +213,27 @@ def patch_id(id:str, need_type: str, config:dict):
         new_id = config["prefix"] + id + config["postfix"]
     return new_id
 
+def patch_links(link:str, config: dict) -> str:
+    new_link: str = ''
+    if len(link) > 0:
+        link_split = link.split(sep=',')
+        links_main_patched: list = []
+        for i in range(link_split):
+            link_split[i] = link_split[i].strip()
+            link_main_part = link_split[i].split(sep='.', maxsplit=1)
+            link_main = link_main_part[0]
+            link_main_patched = patch_id(link_main, '', config)
+            if len(link_main_part) == 1:
+                links_main_patched.append(link_main_patched)
+            else:
+                link_main_patched_merged = link_main_patched + '.'+ link_main_part[1]
+                links_main_patched.append(link_main_patched_merged)
+
+        result = '.'.join(links_main_patched)
+        return result
+
+    else:
+        return link
 
 # patch id generation:
 import aspectlib
@@ -249,6 +270,8 @@ def changeid(*args, **kwargs):
             if output_docname.startswith(path):
                 found = True
                 kwargs['id'] = patch_id(id, need_type, config)
+                for link in config["links"]:
+                    kwargs[link] = patch_links(link, config)
             if found:
                 break
         if found:

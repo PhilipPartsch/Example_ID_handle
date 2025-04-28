@@ -16,7 +16,6 @@ Component B
 
 todos:
 
--  links
 -  filter
 -  needpart
 -  embedded needs

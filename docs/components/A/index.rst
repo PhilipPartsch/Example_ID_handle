@@ -30,9 +30,9 @@ Component A
    empty
 
 .. needtable:: Table of sw_req
-   :filter: type == 'sw_req' and c.this_doc()
+   :filter: c.this_doc()
 
 .. needpie:: Pie chart of ratio sw_req / comp
 
-   type == 'sw_req' and c.this_doc()
-   type == 'comp' and c.this_doc()
+   type == 'sw_req'
+   type == 'comp'

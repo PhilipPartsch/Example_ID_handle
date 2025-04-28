@@ -264,6 +264,7 @@ def patch_links(link:str, config: dict) -> str:
         return link
 
 # function to change needs, before we generate a need
+from sphinx_needs.config import NeedsSphinxConfig
 import aspectlib
 
 @aspectlib.Aspect
@@ -280,6 +281,12 @@ def changeid(*args, **kwargs):
     state = args[1]
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
+
+    app = args[0]
+    needs_config = NeedsSphinxConfig(app.config)
+    extra_types = config.extra_types
+    type_prefixes = [t['prefix'] for t in extra_types]
+    print('type_prefixes: ' + str(type_prefixes))
 
     found: bool = False
     for config in needs_id_prefixes:

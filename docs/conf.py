@@ -237,6 +237,8 @@ def patch_id(id:str, config: dict):
         new_id = config["prefix"] + id + config["postfix"]
     return new_id
 
+import re
+
 #function to patch links
 def patch_links(link:str, config: dict) -> str:
     new_link: str = ''
@@ -245,7 +247,8 @@ def patch_links(link:str, config: dict) -> str:
         links_main_patched: list = []
         for i in range(len(link_split)):
             link_split[i] = link_split[i].strip()
-            link_main_part = link_split[i].split(sep='.', maxsplit=1)
+            #link_main_part = link_split[i].split(sep='.', maxsplit=1)
+            link_main_part = re.split(r"[,;]", link_split[i], maxsplit=1)
             link_main = link_main_part[0]
             link_main_patched = patch_id(link_main, config)
             if len(link_main_part) == 1:

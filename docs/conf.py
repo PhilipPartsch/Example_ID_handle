@@ -284,7 +284,7 @@ def changeid(*args, **kwargs):
 
     app = args[0]
     needs_config = NeedsSphinxConfig(app.config)
-    extra_types = config.extra_types
+    extra_types = needs_config.extra_types
     type_prefixes = [t['prefix'] for t in extra_types]
     print('type_prefixes: ' + str(type_prefixes))
 

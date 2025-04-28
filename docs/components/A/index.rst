@@ -34,5 +34,5 @@ Component A
 
 .. needpie:: Pie chart of ratio sw_req / comp
 
-   type == 'sw_req' and c.this_doc()
+   type == 'sw_req'
    type == 'comp'

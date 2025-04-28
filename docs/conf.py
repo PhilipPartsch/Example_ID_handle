@@ -282,7 +282,9 @@ def changeid(*args, **kwargs):
         for path in config["paths"]:
             if output_docname.startswith(path):
                 found = True
-                kwargs['id'] = patch_id(id, config)
+                new_id = patch_id(id, config)
+                print('patched id: ' + str(new_id))
+                kwargs['id'] = new_id
                 for link in config["links"]:
                     if link in kwargs and len(kwargs[link]) > 0:
                         linkcontent = kwargs[link]

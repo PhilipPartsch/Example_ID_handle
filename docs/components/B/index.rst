@@ -39,3 +39,9 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
 
    type == 'sw_req'
    type == 'comp'
+
+.. test-file:: Example for Test Results
+   :file: _static/_external_data/merge_dicts_test_results.xml
+   :id: TF_EXAMPLE
+   :auto_suites:
+   :auto_cases:

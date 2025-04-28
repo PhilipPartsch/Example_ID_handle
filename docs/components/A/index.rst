@@ -33,5 +33,4 @@ Component A
 todos:
 
 -  filter
--  embedded needs
 

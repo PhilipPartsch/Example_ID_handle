@@ -188,7 +188,7 @@ needs_id_prefixes = [
     {
     "postfix": "_A",
     "prefix":  "A_",
-    "prefix_after_type": False,
+    "prefix_after_type": True,
     "paths": ["components/A/"],
     "links": ["satisfies",],
     },

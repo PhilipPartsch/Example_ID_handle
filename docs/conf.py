@@ -190,7 +190,7 @@ needs_id_prefixes = [
     "prefix":  "A_",
     "prefix_after_type": False,
     "paths": ["components/A/"],
-    "links": "satisfies",
+    "links": ["satisfies",],
     },
 ]
 
@@ -271,7 +271,11 @@ def changeid(*args, **kwargs):
                 found = True
                 kwargs['id'] = patch_id(id, need_type, config)
                 for link in config["links"]:
-                    kwargs[link] = patch_links(link, config)
+                    if link in kwargs:
+                        linkcontent = kwargs[link]
+                        patched_linkcontent = patch_links(linkcontent, config)
+                        print('patched link: ' + str(link) + ' from: ' + str(linkcontent) +' to:' + str(patched_linkcontent))
+                        kwargs[link] = patched_linkcontent
             if found:
                 break
         if found:

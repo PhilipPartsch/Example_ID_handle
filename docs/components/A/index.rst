@@ -42,6 +42,6 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
 
 .. test-file:: Example for Test Results
    :file: _static/_external_data/merge_dicts_test_results.xml
-   :id: TEST_RES_EXAMPLE
+   :id: TF_EXAMPLE
    :auto_suites:
    :auto_cases:

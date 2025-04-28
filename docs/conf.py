@@ -223,8 +223,7 @@ def patch_id(id:str, config: dict):
     new_id: str = ""
     if config["prefix_after_type"]:
         patched: bool = False
-        for needs_type in needs_types:
-            type_prefix = needs_type["prefix"]
+        for type_prefix in config['type_prefixes']:
             if id.startswith(type_prefix):
                 id_without_type_prefix = id[len(type_prefix):]
                 new_id = type_prefix + config["prefix"] + id_without_type_prefix + config["postfix"]
@@ -290,6 +289,10 @@ def changeid(*args, **kwargs):
 
     found: bool = False
     for config in needs_id_prefixes:
+        if 'type_prefixes' not in config:
+            # add type_prefixes to config
+            config['type_prefixes'] = type_prefixes
+
         for path in config["paths"]:
             if output_docname.startswith(path):
                 found = True

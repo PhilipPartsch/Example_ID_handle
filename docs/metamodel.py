@@ -14,59 +14,67 @@ needs_id_regex = '^[A-Za-z0-9_-]{3,}'
 # Define project specific needs directives
 
 needs_types = [
-               # Process-As-Code
-               # Role
-               dict(directive="prole", title="Role", prefix="ROLE_", color="#ffffff", style="actor"),
+   # Process-As-Code
+   # Role
+   dict(directive="prole", title="Role", prefix="ROLE_", color="#ffffff", style="actor"),
 
-               # Strategy
-               dict(directive="strategy", title="Strategy", prefix="STGY_", color="#ffffff", style="hexagon"),
+   # Strategy
+   dict(directive="strategy", title="Strategy", prefix="STGY_", color="#ffffff", style="hexagon"),
 
-               # Process
-               dict(directive="process", title="Process", prefix="PROC_", color="#ffffff", style="package"),
-               dict(directive="activity", title="Activity", prefix="ACT_", color="#ffffff", style="card"),
-               dict(directive="artifact", title="Artifact", prefix="ART_", color="#ffffff", style="artifact"),
-               dict(directive="pstatus", title="Status", prefix="STATUS_", color="#ffffff", style="artifact"), # Child of Artifact
+   # Process
+   dict(directive="process", title="Process", prefix="PROC_", color="#ffffff", style="package"),
+   dict(directive="activity", title="Activity", prefix="ACT_", color="#ffffff", style="card"),
+   dict(directive="artifact", title="Artifact", prefix="ART_", color="#ffffff", style="artifact"),
+   dict(directive="pstatus", title="Status", prefix="STATUS_", color="#ffffff", style="artifact"), # Child of Artifact
 
-               # Instruction
-               dict(directive="template", title="Template", prefix="TEMP_", color="#ffffff", style="frame"),
-               dict(directive="instruction", title="Work Instruction", prefix="INST_", color="#ffffff", style="frame"),
+   # Instruction
+   dict(directive="template", title="Template", prefix="TEMP_", color="#ffffff", style="frame"),
+   dict(directive="instruction", title="Work Instruction", prefix="INST_", color="#ffffff", style="frame"),
 
-               # Storage
-               dict(directive="repo", title="Repository", prefix="REPO_", color="#ffffff", style="database"),
+   # Storage
+   dict(directive="repo", title="Repository", prefix="REPO_", color="#ffffff", style="database"),
 
-               # Timeline
-               dict(directive="lifecycle", title="Lifecycle", prefix="CYCLE_", color="#ffffff", style="card"),
-               dict(directive="phase", title="Phase", prefix="PHASE_", color="#ffffff", style="rectangle"),
-               dict(directive="milestone", title="Milestone", prefix="MILE_", color="#ffffff", style="hexagon"),
+   # Timeline
+   dict(directive="lifecycle", title="Lifecycle", prefix="CYCLE_", color="#ffffff", style="card"),
+   dict(directive="phase", title="Phase", prefix="PHASE_", color="#ffffff", style="rectangle"),
+   dict(directive="milestone", title="Milestone", prefix="MILE_", color="#ffffff", style="hexagon"),
 
-               # Product-As-Code
+   # Product-As-Code
 
-               # Requirements
-               dict(directive="stake_req", title="Stakeholder Requirement", prefix="CSTRQ_", color="#abcdef", style="artifact"),
-               dict(directive="sys_req", title="System Requirement", prefix="SYSRQ_", color="#abcdef", style="artifact"),
-               dict(directive="sw_req", title="Software Requirement", prefix="SWRQ_", color="#abcdef", style="artifact"),
+   # Requirements
+   dict(directive="stake_req", title="Stakeholder Requirement", prefix="CSTRQ_", color="#abcdef", style="artifact"),
+   dict(directive="sys_req", title="System Requirement", prefix="SYSRQ_", color="#abcdef", style="artifact"),
+   dict(directive="sw_req", title="Software Requirement", prefix="SWRQ_", color="#abcdef", style="artifact"),
 
-               # Architecture & Design
-               dict(directive="bin", title="Binary", prefix="BIN_", color="#abcdef", style="rectangle"),
-               dict(directive="lib", title="Library ", prefix="LIB_", color="#abcdef", style="rectangle"),
-               dict(directive="package", title="Package", prefix="P_", color="#abcdef", style="package"),
-               dict(directive="arch_module", title="Module", prefix="M_", color="#abcdef", style="package"),
-               dict(directive="comp", title="Component", prefix="C_", color="#abcdef", style="component"),
-               dict(directive="unit", title="Unit", prefix="U_", color="#abcdef", style="rectangle"),
-               dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="card"),
-               dict(directive="decision", title="Decision", prefix="D_", color="#efff9c", style="artifact"),
+   # Architecture & Design
+   dict(directive="bin", title="Binary", prefix="BIN_", color="#abcdef", style="rectangle"),
+   dict(directive="lib", title="Library ", prefix="LIB_", color="#abcdef", style="rectangle"),
+   dict(directive="package", title="Package", prefix="P_", color="#abcdef", style="package"),
+   dict(directive="arch_module", title="Module", prefix="M_", color="#abcdef", style="package"),
+   dict(directive="comp", title="Component", prefix="C_", color="#abcdef", style="component"),
+   dict(directive="unit", title="Unit", prefix="U_", color="#abcdef", style="rectangle"),
+   dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="card"),
+   dict(directive="decision", title="Decision", prefix="D_", color="#efff9c", style="artifact"),
 
-               # Test
-               dict(directive="test_spec", title="Test Specification", prefix="TS_", color="#abcdef", style="artifact"),
-               dict(directive="test_coverage", title="Test Coverage", prefix="TCOVER_", color="#abcdef", style="artifact"),
-               dict(directive="sys_test", title="System Test", prefix="SYSTST_", color="#abcdef", style="artifact"),
-               dict(directive="sw_test", title="Software Test", prefix="SWTST_", color="#abcdef", style="artifact"),
+   # Test
+   dict(directive="test_spec", title="Test Specification", prefix="TS_", color="#abcdef", style="artifact"),
+   dict(directive="test_coverage", title="Test Coverage", prefix="TCOVER_", color="#abcdef", style="artifact"),
+   dict(directive="sys_test", title="System Test", prefix="SYSTST_", color="#abcdef", style="artifact"),
+   dict(directive="sw_test", title="Software Test", prefix="SWTST_", color="#abcdef", style="artifact"),
 
-               # Generic
-               dict(directive="evaluation", title="Evaluation", prefix="EVAL_", color="#abcdef", style="artifact"),
-               dict(directive="verify", title="Verification Information", prefix="VERIFY_", color="#abcdef", style="artifact"),
+   # Generic
+   dict(directive="evaluation", title="Evaluation", prefix="EVAL_", color="#abcdef", style="artifact"),
+   dict(directive="verify", title="Verification Information", prefix="VERIFY_", color="#abcdef", style="artifact"),
+]
 
-              ]
+for i in range(len(needs_types)):
+    for j in range(len(needs_types)):
+        if needs_types[i]['directive'] != needs_types[j]['directive']:
+            matchs: bool = False
+            matchs = matchs or needs_types[i]['prefix'].startswith(needs_types[j]['prefix'])
+            matchs = matchs or needs_types[j]['prefix'].startswith(needs_types[i]['prefix'])
+            if matchs:
+                print("It is not allowed to have overlapping 'prefix': " + needs_types[i]['prefix'] + " " + needs_types[j]['prefix'])
 
 # Define extra options for needs object
 needs_extra_options = [

@@ -194,20 +194,19 @@ needs_id_prefixes = [
     },
 ]
 
-def patch_id(id:str, need_type: str, config: dict):
+def patch_id(id:str, config: dict):
     new_id: str = ""
     if config["prefix_after_type"]:
-        type_prefix = ""
+        patched: bool = False
         for needs_type in needs_types:
-            if needs_type['directive'] == need_type:
-                type_dict = needs_type
-                type_prefix = type_dict["prefix"]
+            type_prefix = needs_type["prefix"]
+            if id.startswith(type_prefix):
+                id_without_type_prefix = id[len(type_prefix):]
+                new_id = type_prefix + config["prefix"] + id_without_type_prefix + config["postfix"]
+                patched = True
                 break
 
-        if id.startswith(type_prefix):
-            id_without_type_prefix = id[len(type_prefix):]
-            new_id = type_prefix + config["prefix"] + id_without_type_prefix + config["postfix"]
-        else:
+        if not patched:
             new_id = config["prefix"] + id + config["postfix"]
     else:
         new_id = config["prefix"] + id + config["postfix"]
@@ -222,7 +221,7 @@ def patch_links(link:str, config: dict) -> str:
             link_split[i] = link_split[i].strip()
             link_main_part = link_split[i].split(sep='.', maxsplit=1)
             link_main = link_main_part[0]
-            link_main_patched = patch_id(link_main, '', config)
+            link_main_patched = patch_id(link_main, config)
             if len(link_main_part) == 1:
                 links_main_patched.append(link_main_patched)
             else:
@@ -269,7 +268,7 @@ def changeid(*args, **kwargs):
         for path in config["paths"]:
             if output_docname.startswith(path):
                 found = True
-                kwargs['id'] = patch_id(id, need_type, config)
+                kwargs['id'] = patch_id(id, config)
                 for link in config["links"]:
                     if link in kwargs and len(kwargs[link]) > 0:
                         linkcontent = kwargs[link]

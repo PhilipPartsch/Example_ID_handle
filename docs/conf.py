@@ -271,7 +271,7 @@ def changeid(*args, **kwargs):
                 found = True
                 kwargs['id'] = patch_id(id, need_type, config)
                 for link in config["links"]:
-                    if link in kwargs:
+                    if link in kwargs and len(kwargs[link]) > 0:
                         linkcontent = kwargs[link]
                         patched_linkcontent = patch_links(linkcontent, config)
                         print('patched link: ' + str(link) + ' from: ' + str(linkcontent) +' to:' + str(patched_linkcontent))

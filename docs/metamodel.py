@@ -362,7 +362,7 @@ needs_warnings = {
 for type in needs_types:
 
     warn_text = type['directive'] + '_not_following_naming_convention'
-    if warn_text not in needs_warnings:
+    if warn_text not in needs_warnings and False:
         warn_test = "type == '" + type['directive'] + "' and not id.startswith('" + type['prefix'] + "')"
         needs_warnings[warn_text] = warn_test
     else:

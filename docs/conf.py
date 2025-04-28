@@ -243,12 +243,12 @@ import re
 def patch_links(link:str, config: dict) -> str:
     new_link: str = ''
     if len(link) > 0:
-        link_split = link.split(sep=',')
+        #link_split = link.split(sep=',')
+        link_split = re.split(r"[,;]", link)
         links_main_patched: list = []
         for i in range(len(link_split)):
             link_split[i] = link_split[i].strip()
-            #link_main_part = link_split[i].split(sep='.', maxsplit=1)
-            link_main_part = re.split(r"[,;]", link_split[i], maxsplit=1)
+            link_main_part = link_split[i].split(sep='.', maxsplit=1)
             link_main = link_main_part[0]
             link_main_patched = patch_id(link_main, config)
             if len(link_main_part) == 1:

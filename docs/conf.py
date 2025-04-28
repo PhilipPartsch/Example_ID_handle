@@ -190,7 +190,7 @@ needs_id_prefixes = [
     "prefix":  "A_",
     "prefix_after_type": True,
     "paths": ["components/A/"],
-    "links": "",
+    "links": "satisfies",
     },
 ]
 
@@ -231,8 +231,8 @@ def changeid(*args, **kwargs):
 #    **kwargs: Any,
 #):
     print('before hook:')
-    #print("Positional arguments:", args)
-    #print("Keyword arguments:", kwargs)
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
     id = kwargs['id']
     print('id: ' + str(id))
     need_type = kwargs['need_type']

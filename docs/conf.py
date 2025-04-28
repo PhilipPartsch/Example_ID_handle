@@ -200,20 +200,21 @@ for po_name, po_type in patched_options:
 # changes for needs_id_prefixes
 
 # define configuration
+# patching of links is been need for useblocks sphinx-test-reports
 needs_id_prefixes = [
     {
     "postfix": "",
     "prefix":  "A_",
     "prefix_after_type": True,
     "paths": ["components/A/"],
-    "links": ["satisfies",],
+    "links": ["satisfies", "links",],
     },
     {
     "postfix": "_B",
     "prefix":  "",
     "prefix_after_type": False,
     "paths": ["components/B/"],
-    "links": ["satisfies",],
+    "links": ["satisfies", "links",],
     },
 ]
 

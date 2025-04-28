@@ -1,6 +1,6 @@
-###########
-Component A
-###########
+#########
+Component
+#########
 
 .. sw_req:: Example Software Requirement
    :id: SWRQ_EXAMPLE_SW_REQUIREMENT

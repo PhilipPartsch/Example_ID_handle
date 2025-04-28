@@ -184,6 +184,21 @@ def setup(app):
     for func in metamodel.needs_functions:
         add_dynamic_function(app, func)
 
+# fix shinx-needs see https://github.com/useblocks/sphinx-needs/issues/1420
+from sphinx_needs.data import NeedsCoreFields
+patched_options = [
+    ('collapse', 'bool'), ('hide', 'bool'),
+    ('template', 'str'), ('pre_template', 'str'), ('post_template', 'str'),
+    ('type_color', 'str'), ('type_style', 'str'),
+]
+
+for po_name, po_type in patched_options:
+    NeedsCoreFields[po_name]["allow_default"] = po_type
+
+
+# changes for needs_id_prefixes
+
+# define configuration
 needs_id_prefixes = [
     {
     "postfix": "",
@@ -201,6 +216,7 @@ needs_id_prefixes = [
     },
 ]
 
+#function to patch ids
 def patch_id(id:str, config: dict):
     new_id: str = ""
     if config["prefix_after_type"]:
@@ -219,6 +235,7 @@ def patch_id(id:str, config: dict):
         new_id = config["prefix"] + id + config["postfix"]
     return new_id
 
+#function to patch links
 def patch_links(link:str, config: dict) -> str:
     new_link: str = ''
     if len(link) > 0:
@@ -241,22 +258,11 @@ def patch_links(link:str, config: dict) -> str:
     else:
         return link
 
-# patch id generation:
+# function to change needs, before we generate a need
 import aspectlib
 
 @aspectlib.Aspect
 def changeid(*args, **kwargs):
-#def changeid(cutpoint,
-#    app: Sphinx,
-#    state: None | RSTState,
-#    docname: None | str,
-#    lineno: None | int,
-#    need_type: str,
-#    title: str,
-#    *,
-#    id: str | None = None,
-#    **kwargs: Any,
-#):
     print('before hook:')
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)
@@ -291,18 +297,10 @@ def changeid(*args, **kwargs):
     print('after hook:')
     yield aspectlib.Return(result)
 
+#import function ot be extended
 import sphinx_needs.api
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
 
-# fix shinx-needs
-from sphinx_needs.data import NeedsCoreFields
-patched_options = [
-    ('collapse', 'bool'), ('hide', 'bool'),
-    ('template', 'str'), ('pre_template', 'str'), ('post_template', 'str'),
-    ('type_color', 'str'), ('type_style', 'str'),
-]
 
-for po_name, po_type in patched_options:
-    NeedsCoreFields[po_name]["allow_default"] = po_type
 

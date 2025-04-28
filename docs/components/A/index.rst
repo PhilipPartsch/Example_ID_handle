@@ -4,6 +4,7 @@ Component
 
 .. sw_req:: Example Software Requirement
    :id: SWRQ_EXAMPLE_SW_REQUIREMENT
+   :derived: SYSRQ_EXAMPLE_SYS_REQUIREMENT
 
    empty
 
@@ -31,6 +32,8 @@ Component
 
 .. needtable:: Table of sw_req
    :filter: c.this_doc() and type == 'sw_req'
+
+We cannot use in needpie and needbar, see https://github.com/useblocks/sphinx-needs/issues/1449.
 
 .. needpie:: Pie chart of ratio sw_req / comp
 

@@ -9,5 +9,6 @@ System Level
 
 .. lib:: Example lib
    :id: LIB_EXAMPLE
+   :satisfies: SYSRQ_EXAMPLE_SYS_REQUIREMENT
 
    empty

@@ -243,9 +243,6 @@ def changeid(*args, **kwargs):
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
 
-    new_args = args
-    new_kwargs = kwargs
-
     found: bool = False
     for config in needs_id_prefixes:
         for path in config["paths"]:
@@ -256,9 +253,6 @@ def changeid(*args, **kwargs):
                 break
         if found:
             break
-
-    new_id = new_kwargs['id']
-    print('new_id: ' + str(new_id))
 
     result = yield aspectlib.Proceed(*args, **kwargs)
     print('after hook:')

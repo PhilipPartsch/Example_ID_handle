@@ -35,6 +35,7 @@ on_rtd = os.environ.get("READTHEDOCS") == "True"
 
 extensions = [
     'sphinx_needs',
+    'sphinxcontrib.test_reports',
 ]
 
 templates_path = ['_templates']

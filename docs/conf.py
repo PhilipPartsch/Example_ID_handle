@@ -186,10 +186,17 @@ def setup(app):
 
 needs_id_prefixes = [
     {
-    "postfix": "_A",
+    "postfix": "",
     "prefix":  "A_",
     "prefix_after_type": True,
     "paths": ["components/A/"],
+    "links": ["satisfies",],
+    },
+    {
+    "postfix": "_B",
+    "prefix":  "",
+    "prefix_after_type": False,
+    "paths": ["components/B/"],
     "links": ["satisfies",],
     },
 ]

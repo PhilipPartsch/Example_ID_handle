@@ -235,7 +235,7 @@ def patch_links(link:str, config: dict) -> str:
                 link_main_patched_merged = link_main_patched + '.'+ link_main_part[1]
                 links_main_patched.append(link_main_patched_merged)
 
-        result = '.'.join(links_main_patched)
+        result = ', '.join(links_main_patched)
         return result
 
     else:

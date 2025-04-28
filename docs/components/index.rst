@@ -6,4 +6,5 @@ Components Level
    :caption: Contents
 
    A/index
+   B/index
 

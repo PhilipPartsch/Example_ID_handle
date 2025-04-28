@@ -218,7 +218,7 @@ def patch_links(link:str, config: dict) -> str:
     if len(link) > 0:
         link_split = link.split(sep=',')
         links_main_patched: list = []
-        for i in range(link_split):
+        for i in range(len(link_split)):
             link_split[i] = link_split[i].strip()
             link_main_part = link_split[i].split(sep='.', maxsplit=1)
             link_main = link_main_part[0]

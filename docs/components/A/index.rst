@@ -14,7 +14,7 @@ Component A
 
 .. comp:: Example comp
    :id: C_EXAMPLE
-   :satisfies: SWRQ_EXAMPLE_SW_REQUIREMENT, SWRQ_EXAMPLE_2_SW_REQUIREMENT
+   :satisfies: SWRQ_EXAMPLE_SW_REQUIREMENT, SWRQ_EXAMPLE_2_SW_REQUIREMENT.reqpart
 
    empty
 

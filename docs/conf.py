@@ -203,7 +203,6 @@ for po_name, po_type in patched_options:
 # patching of links is been need for useblocks sphinx-test-reports
 needs_id_prefixes = [
     {
-    "filter": "A",
     "postfix": "",
     "prefix":  "A_",
     "prefix_after_type": True,
@@ -211,7 +210,6 @@ needs_id_prefixes = [
     "links": ["satisfies", "links",],
     },
     {
-    "filter": "B",
     "postfix": "_B",
     "prefix":  "",
     "prefix_after_type": False,
@@ -219,7 +217,6 @@ needs_id_prefixes = [
     "links": ["satisfies", "links",],
     },
     {
-    "filter": "C",
     "postfix": "",
     "prefix":  "C_",
     "prefix_after_type": False,
@@ -228,10 +225,41 @@ needs_id_prefixes = [
     },
 ]
 
-#https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-filter-data
-needs_filter_data = {
-    "needs_id_prefixes": needs_id_prefixes,
-}
+# validate that paths not overlap each other
+for i in range(len(needs_id_prefixes)):
+    for j in range(len(needs_id_prefixes)):
+        if i != j:
+            i_paths = needs_id_prefixes[i]["paths"]
+            j_paths = needs_id_prefixes[i]["paths"]
+            for k in range(len(i_paths)):
+                for l in range(len(j_paths)):
+                    overlap: bool = False
+                    overlap = overlap or i_paths[k].startswith(j_paths[l])
+                    overlap = overlap or j_paths[l].startswith(i_paths[k])
+                    if overlap:
+                        print("Warning: in needs_id_prefixes")
+                        print("It is not allowed to have overlapping 'paths': " + i_paths[k] + " " + j_paths[l])
+
+# patch NeedCheckContext
+
+from sphinx_needs.filter_common import NeedCheckContext
+
+
+NeedCheckContext.needs_id_prefixes = needs_id_prefixes
+
+def this_prefix(self) -> bool:
+    if self._origin_docname is None:
+        raise ValueError("`this_doc` can not be used in this context")
+
+    result: bool = False
+    for needs_id_prefix in needs_id_prefixes:
+        for path in needs_id_prefix['paths']:
+            result = result or \
+                     (self._origin_docname.startswith(path) and self._need["docname"].startswith(path))
+
+    return result
+
+NeedCheckContext.this_prefix = this_prefix
 
 #function to patch ids
 def patch_id(id:str, config: dict):

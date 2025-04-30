@@ -228,13 +228,9 @@ needs_id_prefixes = [
     },
 ]
 
-def custom_defined_func(current_need, needs_id_prefixes, c):
-    return current_need['docname'] == c._origin_docname
-
 #https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-filter-data
 needs_filter_data = {
     "needs_id_prefixes": needs_id_prefixes,
-    "sphinx_tag": custom_defined_func,
 }
 
 #function to patch ids

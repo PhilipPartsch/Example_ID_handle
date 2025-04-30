@@ -34,7 +34,7 @@ Component
    :filter: c._origin_docname == docname and type == 'sw_req'
 
 .. needtable:: Table of sw_req
-   :filter: custom_defined_func(current_need, needs_id_prefixes, c)
+   :filter: docname.startswith(needs_id_prefixes[0]["paths"])
 
 We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblocks/sphinx-needs/issues/1449.
 

@@ -203,6 +203,7 @@ for po_name, po_type in patched_options:
 # patching of links is been need for useblocks sphinx-test-reports
 needs_id_prefixes = [
     {
+    "filter": "A",
     "postfix": "",
     "prefix":  "A_",
     "prefix_after_type": True,
@@ -210,6 +211,7 @@ needs_id_prefixes = [
     "links": ["satisfies", "links",],
     },
     {
+    "filter": "B",
     "postfix": "_B",
     "prefix":  "",
     "prefix_after_type": False,
@@ -217,6 +219,7 @@ needs_id_prefixes = [
     "links": ["satisfies", "links",],
     },
     {
+    "filter": "C",
     "postfix": "",
     "prefix":  "C_",
     "prefix_after_type": False,
@@ -224,6 +227,15 @@ needs_id_prefixes = [
     "links": ["satisfies", "links",],
     },
 ]
+
+def custom_defined_func(current_need, needs_id_prefixes, c):
+    return current_need['docname'] == c._origin_docname
+
+#https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-filter-data
+needs_filter_data = {
+    "needs_id_prefixes": needs_id_prefixes,
+    "sphinx_tag": custom_defined_func,
+}
 
 #function to patch ids
 def patch_id(id:str, config: dict):

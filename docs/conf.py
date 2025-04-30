@@ -216,6 +216,13 @@ needs_id_prefixes = [
     "paths": ["components/B/"],
     "links": ["satisfies", "links",],
     },
+    {
+    "postfix": "",
+    "prefix":  "C_",
+    "prefix_after_type": False,
+    "paths": ["components/C/"],
+    "links": ["satisfies", "links",],
+    },
 ]
 
 #function to patch ids
@@ -285,7 +292,7 @@ def changeid(*args, **kwargs):
     needs_config = NeedsSphinxConfig(app.config)
     needs_types = needs_config.types
     type_prefixes = [t['prefix'] for t in needs_types]
-    print('type_prefixes: ' + str(type_prefixes))
+    #print('type_prefixes: ' + str(type_prefixes))
 
     found: bool = False
     for config in needs_id_prefixes:

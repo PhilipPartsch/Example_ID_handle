@@ -5,6 +5,7 @@ Example Project
 .. toctree::
    :caption: Contents
 
+   documentation/index
    system/index
    components/index
 

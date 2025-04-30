@@ -11,7 +11,7 @@ Component
 .. sw_req:: Secound Example Software Requirement
    :id: SWRQ_EXAMPLE_2_SW_REQUIREMENT
 
-   :np:`(reqpart) example text`
+   :np:`(needpart) example text`
 
 .. sw_req:: Embedded Parent Example Software Requirement
    :id: SWRQ_EMBEDDED_PARENT_EXAMPLE_SW_REQUIREMENT

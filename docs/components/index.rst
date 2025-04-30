@@ -6,6 +6,6 @@ Components Level
    :caption: Contents
 
    original/index
-   A/index
-   B/index
-   C/index
+   Component A <A/index>
+   Component B <B/index>
+   Component C <C/index>

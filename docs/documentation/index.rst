@@ -9,7 +9,7 @@ Here we want to show how to have the same element multiple times in the Document
 
 You do have to patch your conf.py to get this working:
 
-.. literalinclude:: conf.py
+.. literalinclude:: /conf.py
    :caption: Changes in conf.py
    :language: py
    :lineno-match:
@@ -32,7 +32,7 @@ It is even possible to use the new intoduced filter:
 
 Example:
 
-.. literalinclude:: components/index.rst
+.. literalinclude:: /components/index.rst
    :caption: How-to fix headlines in a toctree
    :language: py
    :lineno-match:

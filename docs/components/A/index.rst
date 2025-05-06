@@ -34,13 +34,9 @@ Component
    :show_filters:
    :filter: c.this_doc() and type == 'sw_req'
 
-.. needtable:: Table of sw_req
-   :show_filters:
-   :filter: c._origin_docname == docname and type == 'sw_req'
-
-.. needtable:: Table of sw_req
-   :show_filters:
-   :filter: c.this_prefix() and type == 'sw_req'
+.. needtable:: Table of elements within this prefix area
+      :show_filters:
+      :filter: c.this_prefix()
 
 We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblocks/sphinx-needs/issues/1449.
 

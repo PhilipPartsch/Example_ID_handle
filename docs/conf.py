@@ -361,6 +361,3 @@ def changeid(*args, **kwargs):
 import sphinx_needs.api
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
-
-
-

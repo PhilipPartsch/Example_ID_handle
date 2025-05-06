@@ -23,6 +23,7 @@ You can easily filter for the current file with https://sphinx-needs.readthedocs
 It is even possible to use the new intoduced filter:
 
 .. code-block:: python
+
    .. needtable:: Table of elements within this prefix area
       :show_filters:
       :filter: c.this_prefix()

@@ -322,10 +322,13 @@ def changeid(*args, **kwargs):
     print('app: ' + str(app))
     state = args[1]
     print('state: ' + str(state))
+    if len(args) >= 3:
+        docname = args[2]
+        print('docname: ' + str(docname))
+
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
-    docname = args[2]
-    print('docname: ' + str(docname))
+
 
     needs_config = NeedsSphinxConfig(app.config)
     needs_types = needs_config.types

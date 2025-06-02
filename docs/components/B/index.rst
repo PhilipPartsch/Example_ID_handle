@@ -50,3 +50,9 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
    :id: TF_EXAMPLE
    :auto_suites:
    :auto_cases:
+
+Let's try to import needs via `needimport`:
+
+.. needimport:: /_static/_external_data/example_needs.json
+   :id_prefix: imp_
+   :tags: imported

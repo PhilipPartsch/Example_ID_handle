@@ -34,7 +34,7 @@ jobs:
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami
     - name: Install graphviz & default-jdk
-      if: False
+      if: True
       run: sudo apt-get install graphviz default-jdk
     - name: Install dependencies
       run: |
@@ -43,6 +43,7 @@ jobs:
         python -m pip install -r ./docs/requirements.txt
     - name: Set up Java
       uses: actions/setup-java@v4
+      if: False
       with:
         distribution: 'temurin'
         java-version: '21'

@@ -100,7 +100,7 @@ needs_extra_links = [
       "outgoing": "Derived from",
       "style": "#000000",
       "style_start": "-",
-      "style_end": "-<>",
+      "style_end": "-^",
    },
    # Process to Process link
    {

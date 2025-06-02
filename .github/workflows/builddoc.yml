@@ -41,6 +41,17 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install setuptools
         python -m pip install -r ./docs/requirements.txt
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+    - name: Download PlantUML
+      run: curl -L -o ./docs/_tools/plantuml.jar https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar
+    - name: show downloaded _tools
+      run: |
+        cd ./docs/_tools
+        ls -al
     - name: Lint the project with sphinx-lint
       run: |
         sphinx-lint

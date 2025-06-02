@@ -48,7 +48,7 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
    type == 'sw_req'
    type == 'comp'
 
-.. needflow : : Test needflow
+.. needflow:: Test needflow
    :filter: c.this_prefix()
 
 Let's try to import needs via `needimport`:

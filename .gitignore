@@ -1,4 +1,4 @@
-_external_data/
+#_external_data/
 generated/
 
 #Sphinx build folder in gitlab

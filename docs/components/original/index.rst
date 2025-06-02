@@ -53,8 +53,6 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
 
 Let's try to import needs via `needimport`:
 
-.. example:: How-to import a Need
-
-   .. needimport:: /docs/_static/_external_data/example_needs.json
-      :id_prefix: imp_
-      :tags: imported
+.. needimport:: /docs/_static/_external_data/example_needs.json
+   :id_prefix: imp_
+   :tags: imported

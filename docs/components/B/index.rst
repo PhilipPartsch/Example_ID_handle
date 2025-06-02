@@ -57,5 +57,13 @@ Let's try to import needs via `needimport`:
    :id_prefix: imp_
    :tags: imported
 
+Show how tu use `needextend`:
+
 .. needextend:: "imported" in tags and c.this_prefix()
    :status: implemented
+
+Filter for imported needs with `needtable`:
+
+.. needtable:: Imported Needs
+   :show_filters:
+   :filter: "imported" in tags and c.this_prefix()

@@ -318,13 +318,15 @@ def changeid(*args, **kwargs):
     print('id: ' + str(id))
     need_type = kwargs['need_type']
     print('need_type: ' + str(need_type))
-    docname = args[2]
-    print('docname: ' + str(docname))
+    app = args[0]
+    print('app: ' + str(app))
     state = args[1]
+    print('state: ' + str(state))
     output_docname = state.document.settings.env.docname
     print('state docname: ' + str(output_docname))
+    docname = args[2]
+    print('docname: ' + str(docname))
 
-    app = args[0]
     needs_config = NeedsSphinxConfig(app.config)
     needs_types = needs_config.types
     type_prefixes = [t['prefix'] for t in needs_types]

@@ -1,6 +1,7 @@
 sphinx
 sphinx-needs
 matplotlib
+sphinxcontrib-plantuml
 sphinx-immaterial
 sphinx-rtd-theme
 sphinx-test-reports

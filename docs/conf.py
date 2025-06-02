@@ -252,12 +252,23 @@ def this_prefix(self) -> bool:
         raise ValueError("`this_doc` can not be used in this context")
 
     result: bool = False
+    check_any_prefix_match_current_file: bool = False
+    check_any_prefix_match_current_need: bool = False
     for needs_id_prefix in needs_id_prefixes:
         for path in needs_id_prefix['paths']:
             result = result or \
-                     (self._origin_docname.startswith(path) and self._need["docname"].startswith(path))
+                (self._origin_docname.startswith(path) and self._need["docname"].startswith(path))
+            check_any_prefix_match_current_file = check_any_prefix_match_current_file or \
+                self._origin_docname.startswith(path)
+            check_any_prefix_match_current_need = check_any_prefix_match_current_need or \
+                self._need["docname"].startswith(path)
 
-    return result
+    if check_any_prefix_match_current_file:
+        return result
+    else:
+        # The current file does not fit in any prefix area
+        # -> Return True if need is even not part of any prefix area
+        return not check_any_prefix_match_current_need
 
 NeedCheckContext.this_prefix = this_prefix
 

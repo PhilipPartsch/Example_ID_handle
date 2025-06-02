@@ -57,7 +57,7 @@ Let's try to import needs via `needimport`:
    :id_prefix: imp_
    :tags: imported
 
-Show how tu use `needextend`:
+Show how to use `needextend`:
 
 .. needextend:: "imported" in tags and c.this_prefix()
    :status: implemented

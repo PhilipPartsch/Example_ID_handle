@@ -322,18 +322,14 @@ def changeid(*args, **kwargs):
     print('app: ' + str(app))
     state = args[1]
     print('state: ' + str(state))
+    docname = ''
     if len(args) >= 3:
         docname = args[2]
-        print('docname: ' + str(docname))
-        output_docname = docname
     elif 'docname' in kwargs:
         docname = kwargs['docname']
-        print('docname: ' + str(docname))
-        output_docname = docname
     else:
-        state_docname = state.document.settings.env.docname
-        print('state docname: ' + str(state_docname))
-        output_docname = state_docname
+        docname = state.document.settings.env.docname
+    print('docname: ' + str(docname))
 
 
     needs_config = NeedsSphinxConfig(app.config)
@@ -348,7 +344,7 @@ def changeid(*args, **kwargs):
             config['type_prefixes'] = type_prefixes
 
         for path in config["paths"]:
-            if output_docname.startswith(path):
+            if docname.startswith(path):
                 found = True
                 new_id = patch_id(id, config)
                 print('patched id: ' + str(new_id))

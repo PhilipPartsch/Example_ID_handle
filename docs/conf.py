@@ -325,9 +325,15 @@ def changeid(*args, **kwargs):
     if len(args) >= 3:
         docname = args[2]
         print('docname: ' + str(docname))
-
-    output_docname = state.document.settings.env.docname
-    print('state docname: ' + str(output_docname))
+        output_docname = docname
+    elif 'docname' in kwargs:
+        docname = kwargs['docname']
+        print('docname: ' + str(docname))
+        output_docname = docname
+    else:
+        state_docname = state.document.settings.env.docname
+        print('state docname: ' + str(state_docname))
+        output_docname = state_docname
 
 
     needs_config = NeedsSphinxConfig(app.config)

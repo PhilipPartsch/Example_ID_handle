@@ -48,7 +48,8 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
     - name: Download PlantUML
-      run: curl -L -o ./docs/_tools/plantuml.jar https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar
+      run: curl -L -o ./docs/_tools/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025.3/plantuml-1.2025.3.jar
+      #https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar
     - name: make plantuml executable
       run: |
         chmod u+x ./docs/_tools/plantuml.jar

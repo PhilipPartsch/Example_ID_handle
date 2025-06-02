@@ -36,7 +36,9 @@ Component
 .. needtable:: Table of elements within this prefix area
    :filter: c.this_prefix()
 
-.. needlist:: List of elements within this prefix area
+List of elements within this prefix area:
+
+.. needlist::
    :filter: c.this_prefix()
 
 We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblocks/sphinx-needs/issues/1449.

@@ -233,12 +233,13 @@ for i in range(len(needs_id_prefixes)):
             j_paths = needs_id_prefixes[i]["paths"]
             for k in range(len(i_paths)):
                 for l in range(len(j_paths)):
-                    overlap: bool = False
-                    overlap = overlap or i_paths[k].startswith(j_paths[l])
-                    overlap = overlap or j_paths[l].startswith(i_paths[k])
-                    if overlap:
-                        print("Warning: in needs_id_prefixes")
-                        print("It is not allowed to have overlapping 'paths': " + i_paths[k] + " " + j_paths[l])
+                    if k != l:
+                        overlap: bool = False
+                        overlap = overlap or i_paths[k].startswith(j_paths[l])
+                        overlap = overlap or j_paths[l].startswith(i_paths[k])
+                        if overlap:
+                            print("Warning: in needs_id_prefixes")
+                            print("It is not allowed to have overlapping 'paths': " + i_paths[k] + " " + j_paths[l])
 
 # patch NeedCheckContext
 

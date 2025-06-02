@@ -50,6 +50,7 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
 
 .. needflow:: Test needflow
    :filter: c.this_prefix()
+   :debug:
 
 Let's try to import needs via `needimport`:
 

@@ -56,3 +56,6 @@ Let's try to import needs via `needimport`:
 .. needimport:: /_static/_external_data/example_needs.json
    :id_prefix: imp_
    :tags: imported
+
+.. needextend:: "imported" in tags and c.this_prefix()
+   :status: implemented

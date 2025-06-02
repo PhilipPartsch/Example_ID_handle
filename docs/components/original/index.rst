@@ -30,13 +30,14 @@ Component
 
    empty
 
-.. needtable:: Table of sw_req
-   :show_filters:
+.. needtable:: Table of sw_req within in this file
    :filter: c.this_doc() and type == 'sw_req'
 
 .. needtable:: Table of elements within this prefix area
-      :show_filters:
-      :filter: c.this_prefix()
+   :filter: c.this_prefix()
+
+.. needlist:: List of elements within this prefix area
+   :filter: c.this_prefix()
 
 We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblocks/sphinx-needs/issues/1449.
 
@@ -45,11 +46,8 @@ We cannot use c.this_doc() in needpie and needbar, see https://github.com/useblo
    type == 'sw_req'
    type == 'comp'
 
-.. test-file:: Example for Test Results
-   :file: _static/_external_data/merge_dicts_test_results.xml
-   :id: TF_EXAMPLE
-   :auto_suites:
-   :auto_cases:
+.. needflow:: Test needflow
+   :filter: c.this_prefix()
 
 Let's try to import needs via `needimport`:
 
@@ -67,3 +65,9 @@ Filter for imported needs with `needtable`:
 .. needtable:: Imported Needs
    :show_filters:
    :filter: "imported" in tags and c.this_prefix()
+
+.. test-file:: Example for Test Results
+   :file: _static/_external_data/merge_dicts_test_results.xml
+   :id: TF_EXAMPLE
+   :auto_suites:
+   :auto_cases:

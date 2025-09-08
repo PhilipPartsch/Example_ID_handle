@@ -393,6 +393,17 @@ def changeid_for_process_need_ref(*args, **kwargs):
     print('before hook:')
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)
+
+    docname:str = ''
+    if len(args) >= 3:
+        docname = args[2]
+    elif 'docname' in kwargs:
+        docname = kwargs['docname']
+    print('docname: ' + str(docname))
+
+    if len(docname) > 0:
+        print('process ids:')
+
     print('call original function:')
     result = yield aspectlib.Proceed(*args, **kwargs)
     print('after hook:')

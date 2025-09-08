@@ -329,6 +329,7 @@ import aspectlib
 
 @aspectlib.Aspect
 def changeid(*args, **kwargs):
+    print('changeid')
     print('before hook:')
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)
@@ -388,6 +389,7 @@ sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
 
 @aspectlib.Aspect
 def changeid_for_process_need_ref(*args, **kwargs):
+    print('changeid_for_process_need_ref')
     print('before hook:')
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)

@@ -444,7 +444,7 @@ def changeid_for_process_need_ref(*args, **kwargs):
 
                             ref_name: None | str | nodes.Text = node_need_ref.children[0].children[0]
                             if str(need_id_full) == str(ref_name):
-                                node_need_ref.children[0].children[0] = need_id_full_patched
+                                node_need_ref.children[0] = nodes.Text(need_id_full_patched)
                 if found:
                     break
             if found:

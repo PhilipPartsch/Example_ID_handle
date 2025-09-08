@@ -402,3 +402,7 @@ def changeid_for_process_need_ref(*args, **kwargs):
 import sphinx_needs.roles.need_ref
 
 sphinx_needs.roles.need_ref.process_need_ref = changeid_for_process_need_ref(sphinx_needs.roles.need_ref.process_need_ref)
+
+import sphinx_needs.needs
+from sphinx_needs.roles.need_ref import NeedRef
+sphinx_needs.needs.NODE_TYPES[NeedRef] = changeid_for_process_need_ref(sphinx_needs.roles.need_ref.process_need_ref)

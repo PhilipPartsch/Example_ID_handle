@@ -283,7 +283,7 @@ def patch_id(id:str, config: dict):
         if "prefix_after_type" in config and config["prefix_after_type"]:
             for type_prefix in config['type_prefixes']:
                 if id.startswith(type_prefix):
-                    id_without_type_prefix = id[len(type_prefix):]
+                    id_without_type_prefix:str = id[len(type_prefix):]
                     new_id = type_prefix + config["prefix"] + id_without_type_prefix
                     patched = True
                     break

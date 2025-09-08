@@ -18,6 +18,7 @@ Component
    :id: SWRQ_EXAMPLE_2_SW_REQUIREMENT
 
    :np:`(needpart) example text`
+
    :need:`C_EXAMPLE` shall <added your text here>.
 
 .. sw_req:: Embedded Parent Example Software Requirement

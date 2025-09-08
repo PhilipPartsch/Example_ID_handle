@@ -277,19 +277,24 @@ NeedCheckContext.this_prefix = this_prefix
 #function to patch ids
 def patch_id(id:str, config: dict):
     new_id: str = ""
-    if config["prefix_after_type"]:
+
+    if "prefix" in config:
         patched: bool = False
-        for type_prefix in config['type_prefixes']:
-            if id.startswith(type_prefix):
-                id_without_type_prefix = id[len(type_prefix):]
-                new_id = type_prefix + config["prefix"] + id_without_type_prefix + config["postfix"]
-                patched = True
-                break
+        if "prefix_after_type" in config and config["prefix_after_type"]:
+            for type_prefix in config['type_prefixes']:
+                if id.startswith(type_prefix):
+                    id_without_type_prefix = id[len(type_prefix):]
+                    new_id = type_prefix + config["prefix"] + id_without_type_prefix
+                    patched = True
+                    break
 
         if not patched:
-            new_id = config["prefix"] + id + config["postfix"]
+            new_id = config["prefix"] + id
     else:
-        new_id = config["prefix"] + id + config["postfix"]
+        new_id = id
+
+    if "postfix" in config:
+        new_id = new_id + config["postfix"]
     return new_id
 
 import re

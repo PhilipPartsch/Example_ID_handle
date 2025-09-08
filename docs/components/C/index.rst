@@ -17,14 +17,18 @@ Component
 .. sw_req:: Secound Example Software Requirement
    :id: SWRQ_EXAMPLE_2_SW_REQUIREMENT
 
+   :need:`C_EXAMPLE` shall <added your text here>.
+
    :np:`(needpart) example text`
 
-   :need:`C_EXAMPLE` shall <added your text here>.
+   Important is to cover additionally :need:`SWRQ_EXAMPLE_2_SW_REQUIREMENT.needpart`.
 
 .. sw_req:: Embedded Parent Example Software Requirement
    :id: SWRQ_EMBEDDED_PARENT_EXAMPLE_SW_REQUIREMENT
 
    :need:`C_EXAMPLE` shall <added your text here>.
+
+   Important is to cover additionally :need:`SWRQ_EMBEDDED_CHILD_EXAMPLE_SW_REQUIREMENT`.
 
    .. sw_req:: Embedded Child Example Software Requirement
       :id: SWRQ_EMBEDDED_CHILD_EXAMPLE_SW_REQUIREMENT

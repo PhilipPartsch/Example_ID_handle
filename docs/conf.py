@@ -387,6 +387,7 @@ import sphinx_needs.api
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
 
+from docutils import nodes
 from sphinx_needs.data import SphinxNeedsData
 
 @aspectlib.Aspect

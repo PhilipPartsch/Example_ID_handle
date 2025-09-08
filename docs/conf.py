@@ -397,6 +397,6 @@ def changeid_for_process_need_ref(*args, **kwargs):
     yield aspectlib.Return(result)
 
 #import function process_need_ref to extend
-import sphinx_needs.roles.needref
+import sphinx_needs.roles.need_ref
 
-sphinx_needs.roles.needref.process_need_ref = changeid_for_process_need_ref(sphinx_needs.roles.needref.process_need_ref)
+sphinx_needs.roles.need_ref.process_need_ref = changeid_for_process_need_ref(sphinx_needs.roles.need_ref.process_need_ref)

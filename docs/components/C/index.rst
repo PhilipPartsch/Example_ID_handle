@@ -2,26 +2,35 @@
 Component
 #########
 
+**Intdocution**
+
+<Here we give a short introdction to :need:`C_EXAMPLE`.>
+
+**Requirements**
+
 .. sw_req:: Example Software Requirement
    :id: SWRQ_EXAMPLE_SW_REQUIREMENT
    :derived: SYSRQ_EXAMPLE_SYS_REQUIREMENT
 
-   empty
+   :need:`C_EXAMPLE` shall <added your text here>.
 
 .. sw_req:: Secound Example Software Requirement
    :id: SWRQ_EXAMPLE_2_SW_REQUIREMENT
 
    :np:`(needpart) example text`
+   :need:`C_EXAMPLE` shall <added your text here>.
 
 .. sw_req:: Embedded Parent Example Software Requirement
    :id: SWRQ_EMBEDDED_PARENT_EXAMPLE_SW_REQUIREMENT
 
-   empty
+   :need:`C_EXAMPLE` shall <added your text here>.
 
    .. sw_req:: Embedded Child Example Software Requirement
       :id: SWRQ_EMBEDDED_CHILD_EXAMPLE_SW_REQUIREMENT
 
-      empty
+      :need:`C_EXAMPLE` shall <added your text here>.
+
+**Architecture Element**
 
 .. comp:: Example comp
    :id: C_EXAMPLE
@@ -29,7 +38,9 @@ Component
    :satisfies: SWRQ_EXAMPLE_SW_REQUIREMENT, SWRQ_EXAMPLE_2_SW_REQUIREMENT.needpart,
                SWRQ_EMBEDDED_PARENT_EXAMPLE_SW_REQUIREMENT, SWRQ_EMBEDDED_CHILD_EXAMPLE_SW_REQUIREMENT
 
-   empty
+   <Here you document your component.>
+
+**Reports**
 
 .. needtable:: Table of sw_req within in this file
    :filter: c.this_doc() and type == 'sw_req'

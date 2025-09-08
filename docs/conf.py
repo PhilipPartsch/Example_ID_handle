@@ -387,6 +387,8 @@ import sphinx_needs.api
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
 
+from sphinx_needs.data import SphinxNeedsData
+
 @aspectlib.Aspect
 def changeid_for_process_need_ref(*args, **kwargs):
     print('changeid_for_process_need_ref')
@@ -394,15 +396,49 @@ def changeid_for_process_need_ref(*args, **kwargs):
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)
 
+    app = None
+    env = None
     docname:str = ''
-    if len(args) >= 3:
-        docname = args[2]
-    elif 'docname' in kwargs:
-        docname = kwargs['docname']
-    print('docname: ' + str(docname))
+    found_nodes = []
+    needs_config = None
+    type_prefixes = None
+    all_needs = None
 
-    if len(docname) > 0:
+    if len(args) >= 4:
         print('process ids:')
+
+        app = args[0]
+        print('app: ' + str(app))
+        env = app.env
+
+        docname = args[2]
+        found_nodes = args[3]
+
+        print('docname: ' + str(docname))
+
+        needs_config = NeedsSphinxConfig(app.config)
+        needs_types = needs_config.types
+        type_prefixes = [t['prefix'] for t in needs_types]
+
+        all_needs = SphinxNeedsData(env).get_needs_view()
+
+    if len(found_nodes) > 0 and len(docname) > 0:
+
+        found: bool = False
+        for config in needs_id_prefixes:
+            if 'type_prefixes' not in config:
+                # add type_prefixes to config
+                config['type_prefixes'] = type_prefixes
+
+            for path in config["paths"]:
+                if docname.startswith(path):
+                    found = True
+                    for node_need_ref in found_nodes:
+                        print("node_need_ref: " + str(node_need_ref))
+                if found:
+                    break
+            if found:
+                break
 
     print('call original function:')
     result = yield aspectlib.Proceed(*args, **kwargs)

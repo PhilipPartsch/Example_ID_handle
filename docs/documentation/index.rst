@@ -54,6 +54,7 @@ Todo: test if it working with child headlines, too.
 -  use needimport
 -  use needextend
 -  use sphinx-test-reports
+-  need_ref to needs, embedded needs and needpart
 
 **Restrictions:**
 

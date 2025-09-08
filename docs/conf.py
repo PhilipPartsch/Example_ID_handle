@@ -441,6 +441,10 @@ def changeid_for_process_need_ref(*args, **kwargs):
                         if need_id_full_patched in all_needs:
                             node_need_ref["reftarget"] = need_id_full_patched
                             print('patched needref from: ' + str(need_id_full) +' to:' + str(need_id_full_patched))
+
+                            ref_name: None | str | nodes.Text = node_need_ref.children[0].children[0]
+                            if str(need_id_full) == str(ref_name):
+                                node_need_ref.children[0].children[0] = need_id_full_patched
                 if found:
                     break
             if found:

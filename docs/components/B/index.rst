@@ -2,7 +2,7 @@
 Component
 #########
 
-**Intdocution**
+**Introdction**
 
 <Here we give a short introdction to :need:`C_EXAMPLE`.>
 

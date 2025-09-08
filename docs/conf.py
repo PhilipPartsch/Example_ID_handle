@@ -376,11 +376,27 @@ def changeid(*args, **kwargs):
         if found:
             break
 
+    print('call original function:')
     result = yield aspectlib.Proceed(*args, **kwargs)
     print('after hook:')
     yield aspectlib.Return(result)
 
-#import function ot be extended
+#import function to be extended
 import sphinx_needs.api
 
 sphinx_needs.api.add_need = changeid(sphinx_needs.api.add_need)
+
+@aspectlib.Aspect
+def changeid_for_process_need_ref(*args, **kwargs):
+    print('before hook:')
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+    print('call original function:')
+    result = yield aspectlib.Proceed(*args, **kwargs)
+    print('after hook:')
+    yield aspectlib.Return(result)
+
+#import function process_need_ref to extend
+import sphinx_needs.roles.needref
+
+sphinx_needs.roles.needref.process_need_ref = changeid_for_process_need_ref(sphinx_needs.roles.needref.process_need_ref)
